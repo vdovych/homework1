@@ -28,12 +28,11 @@ public class Student extends BasicStudent {
                     new JsonPair("mark",new JsonNumber(exam.value)),
                     new JsonPair("passed", new JsonBoolean(exam.value>2))));
         }
-        JsonArray arr = new JsonArray();
-        for (JsonObject exam:
-             jsonExams) {
-            arr.add(exam);
-        }
-        jsonObject.add(new JsonPair("exams", arr));
+
+        Json[] jsons = new Json[jsonExams.size()];
+        jsons = jsonExams.toArray(jsons);
+        JsonArray jsonArray = new JsonArray(jsons);
+        jsonObject.add(new JsonPair("exams", jsonArray));
         return jsonObject;
     }
 }

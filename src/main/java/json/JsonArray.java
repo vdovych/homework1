@@ -2,29 +2,18 @@ package json;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Andrii_Rodionov on 1/3/2017.
  */
 public class JsonArray extends Json {
-    private List<Json> jsons;
+    private final List<Json> jsons;
 
-    public JsonArray(){
-        this.jsons = new LinkedList<>();
-    }
     public JsonArray(Json... jsons) {
-        this.jsons = new LinkedList<>();
-        for (Json json:
-             jsons) {
-            this.jsons.add(json);
-        }
+        this.jsons = Arrays.asList(jsons);
     }
 
-    public void add(Json json){
-        jsons.add(json);
-    }
     @Override
     public String toJson() {
         return "[" + getJsonArrBody() + "]";
